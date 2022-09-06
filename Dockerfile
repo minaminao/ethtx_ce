@@ -7,6 +7,7 @@ RUN pip install --upgrade pip && pip install pipenv
 
 # Copy Pipfile* in case it doesn't exist in the repo
 COPY Pipfile* /app/
+COPY ./ethtx /app/ethtx
 
 COPY ./ethtx_ce/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
