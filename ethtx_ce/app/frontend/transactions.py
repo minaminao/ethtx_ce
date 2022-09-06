@@ -54,6 +54,14 @@ def read_decoded_transaction(
 
     return show_transaction_page(decoded_transaction)
 
+def get_etherscan_url(chain_id: str):
+    ETHERSCAN_URLS = {
+        "mainnet": "https://etherscan.io/",
+        "rinkeby": "https://rinkeby.etherscan.io/",
+        "goerli": "https://goerli.etherscan.io/",
+        "bsc": "https://bscscan.com/",
+    }
+    return ETHERSCAN_URLS[chain_id]
 
 def show_transaction_page(data: DecodedTransaction) -> render_template:
     """Render transaction/exception page."""
@@ -66,6 +74,7 @@ def show_transaction_page(data: DecodedTransaction) -> render_template:
             call=data.calls,
             transfers=data.transfers,
             balances=data.balances,
+            etherscan_url=get_etherscan_url(data.metadata.chain_id),
         ),
         200,
     )
