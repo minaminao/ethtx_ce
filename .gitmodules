@@ -1,0 +1,3 @@
+[submodule "ethtx"]
+	path = ethtx
+	url = https://github.com/minaminao/ethtx
